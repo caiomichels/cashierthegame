@@ -66,7 +66,8 @@ function Game() {
 	]
 
 	function handleRefundAdd(unit: Unit): void {
-		if (gameState !== "running") {
+		console.log(currentRefund)
+		if (gameState !== "running" || currentRefund.length === 0) {
 			return
 		}
 		setCurrentRefund([...currentRefund, unit.value])
@@ -114,19 +115,25 @@ function Game() {
 				setPayment([])
 				setCurrentRefund([])
 
-				const currentRefundValue = currentRefund.reduce((total, value) => total + value)
-				if (currentRefundValue === correctRefund) {
-					setMessage(`CORRECT! $${correctRefund.toFixed(2)!!!}`)
-					setSignal("+")
-					setScore(score + 10)
-				} else {
-					let sign = Math.sign(currentRefundValue - correctRefund)
-					setMessage(
-						`Wrong... $${((currentRefundValue - correctRefund * sign) / 100).toFixed(
-							2
-						)} ${sign > 0 ? "more" : "less"}`
-					)
+				if (currentRefund.length === 0) {
+					setMessage("Wrong...")
 					setSignal("-")
+				} else {
+					const currentRefundValue = currentRefund.reduce((total, value) => total + value)
+					if (currentRefundValue === correctRefund) {
+						setMessage(`CORRECT!!!`)
+						setSignal("+")
+						setScore(score + 10)
+					} else {
+						// let sign = Math.sign(currentRefundValue - correctRefund)
+						// setMessage(
+						// 	`Wrong... $${((currentRefundValue - correctRefund * sign) / 100).toFixed(
+						// 		2
+						// 	)} ${sign > 0 ? "more" : "less"}`
+						// )
+						setMessage("Wrong...")
+						setSignal("-")
+					}
 				}
 				setMessageDisplay("flex")
 
@@ -151,12 +158,6 @@ function Game() {
 		}
 	}, [gameState, setGameState])
 
-	useEffect(() => {
-		if (currentRefund.length) {
-			console.log(currentRefund.reduce((total, unit) => total + unit))
-		}
-	}, [currentRefund, setCurrentRefund])
-
 	return (
 		<div className="w-screen h-screen flex justify-center items-center bg-slate-700">
 			<Popup
@@ -173,7 +174,7 @@ function Game() {
                 flex flex-col items-center justify-between
                 p-5 rounded-xl bg-slate-50`}
 			>
-				<h1 className="w-full text-xl">
+				<h1 className="w-full text-5xl font-bold text-slate-800">
 					{nickname} - {score}
 				</h1>
 				<div className="w-full h-full flex gap-x-4">

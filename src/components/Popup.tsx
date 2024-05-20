@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react"
-import Button from "./Button"
 import KeyboardText from "./KeyboardText"
+import ButtonLight from "./ButtonLight"
 
 interface PopupProps {
 	title: string
@@ -26,13 +26,7 @@ function Popup({ title, description, handler, className }: PopupProps) {
 				{title}
 			</KeyboardText>
 			<p className="text-xl text-slate-50">{description}</p>
-			<Button
-				className={`w-fit bg-slate-300 text-slate-800
-                hover:bg-sepia-500`}
-				handler={handler}
-			>
-				Start
-			</Button>
+			<ButtonLight handler={handler}>Start</ButtonLight>
 		</div>
 	)
 }
