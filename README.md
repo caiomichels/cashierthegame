@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+# Cashier the Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A game made to exercise your logical-mathematical intelligence! The game was purpose for a english language school work, based on a job that uses this type of intelligence.
 
-Currently, two official plugins are available:
+## How to Play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The game consists in 12 rounds, each round a costumer will by some items from your shop, that will appear in the monitor at left, with the total value at bottom. The money notes will appear at right, and you need to give the right change, clicking in the notes and coins at bottom, and when the total change is correct, press in the playack button.
 
-## Expanding the ESLint configuration
+## How it was made
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+I used ReactJS build with Vite and using TypesScript to build this web application, with libraries as React Router for routing and TailwindCSS for styling, and deployed with Google's Firebase platform.
